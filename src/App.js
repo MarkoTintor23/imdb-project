@@ -1,7 +1,23 @@
 import logo from "./logo.svg";
 import "./App.css";
+import axios from "axios";
 
-const API_KEY = "9655570b";
+console.log(
+  process.env.REACT_APP_OMDBAPI_KEY,
+  process.env.REACT_APP_OMDBAPI_URL
+);
+
+// https://www.omdbapi.com/?t=Terminator&apikey=9655570b&
+
+axios
+  .get(
+    process.env.REACT_APP_OMDBAPI_URL +
+      "?t=Terminator&apikey=" +
+      process.env.REACT_APP_OMDBAPI_KEY +
+      "&"
+  )
+  .then((response) => console.log(response.data))
+  .catch((error) => console.log(error));
 function App() {
   return (
     <div className="App">
