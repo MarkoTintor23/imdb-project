@@ -1,6 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
+const API_KEY = "9655570b";
 function App() {
   return (
     <div className="App">
