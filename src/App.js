@@ -1,42 +1,15 @@
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
+import { useState } from "react";
+import Movies from "./Components/movies";
 
-console.log(
-  process.env.REACT_APP_OMDBAPI_KEY,
-  process.env.REACT_APP_OMDBAPI_URL
-);
-
-// https://www.omdbapi.com/?t=Terminator&apikey=9655570b&
-
-axios
-  .get(
-    process.env.REACT_APP_OMDBAPI_URL +
-      "?t=Terminator&apikey=" +
-      process.env.REACT_APP_OMDBAPI_KEY +
-      "&"
-  )
-  .then((response) => console.log(response.data))
-  .catch((error) => console.log(error));
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Movies />
+    </>
   );
-}
+};
 
 export default App;
