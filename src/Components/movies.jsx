@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import MovieCard from "../Templates/Snippets/MovieCard";
 
 const Movies = () => {
-  const [movieName, setMovieName] = useState();
+  const [movieName, setMovieName] = useState("lord of the rings");
+  const [movieData, setMovieData] = useState({});
+
   const searchMovieByTitle = () => {
     axios
       .get(
@@ -13,9 +16,13 @@ const Movies = () => {
           process.env.REACT_APP_OMDBAPI_KEY +
           "&"
       )
-      .then((response) => console.log(response.data))
+      .then((response) => setMovieData(response.data))
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    searchMovieByTitle();
+  }, []);
 
   return (
     <>
@@ -29,6 +36,7 @@ const Movies = () => {
           search movie
         </button>
       </form>
+      <MovieCard movie={movieData} />
     </>
   );
 };
